@@ -42,7 +42,7 @@ class Button {
       popMatrix(); //reverts to previously pushed xy plane
 
       if (mousePressed)    
-        if (mouseX < oxLoc + xMult * out.length() && mouseX > oxLoc && mouseY < oyLoc +  tSize + (tSize/4) && mouseY > oyLoc)
+        if (mouseX < xLoc + xMult * out.length() && mouseX > xLoc && mouseY < yLoc +  tSize + (tSize/4) && mouseY > yLoc)
           if (preventNoise == 0) {
             buttonActionPerformed(out);
             preventNoise = -8;
