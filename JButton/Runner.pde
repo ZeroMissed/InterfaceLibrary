@@ -53,19 +53,19 @@ class Button {
     oxLoc = x;
     oyLoc = y;
   }
-  void align(String x, String y) {
-    if (x.equalsIgnoreCase("left"))
+   void align(int x, int y) {
+    if (x == LEFT)
       xLoc = oxLoc;
-    if (x.equalsIgnoreCase("center"))
+    if (x == CENTER)
       xLoc = int(oxLoc - bWidth/2);
-    if (x.equalsIgnoreCase("right"))
+    if (x == RIGHT)
       xLoc = int(oxLoc - bWidth);
 
-    if (y.equalsIgnoreCase("top"))
+    if (y == TOP)
       yLoc = oyLoc;
-    if (y.equalsIgnoreCase("center"))
+    if (y == CENTER)
       yLoc = int(oyLoc - bHeight/2);
-    if (y.equalsIgnoreCase("bottom"))
+    if (y == BOTTOM)
       yLoc = int(oyLoc - bHeight);
-  }
+  } 
 }

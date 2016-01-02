@@ -10,8 +10,8 @@ void setup() {
 
 void draw() {
   background(255);
-  a.align("","");
-  b.align("","");
+  a.align(CENTER, CENTER);
+  //b.align(CENTER, TOP);
   a.setVisible(true);
   b.setVisible(true);
 }
