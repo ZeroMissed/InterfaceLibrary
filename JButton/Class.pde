@@ -1,8 +1,7 @@
 class Button {
-  private String in, out;
+  private String in, out, word[];
   private int xMult, tSize, oxLoc, oyLoc, xLoc, yLoc, preventNoise, br, bg, bb, tr, tg, tb, or, og, ob;
   private float bHeight, bWidth;
-  private String word[];
   private boolean noHLClick, noHLHover; // don't highlight button on click or on hover
 
   Button(int tSize, int oxLoc, int oyLoc, String in) {
@@ -13,11 +12,11 @@ class Button {
     this.oyLoc = oyLoc;
     this.xLoc = oxLoc;
     this.yLoc = oyLoc;
-    this.word = new String[in.length()];
   }
 
   void setVisible(boolean tf) {
     if (tf) {
+      word = new String[in.length()];
       //assigns the value of each char to a String array to add proper capitalization
       for (int i = 0; i < in.length(); i++) {
         word[i] = String.valueOf(in.charAt(i));
@@ -49,7 +48,7 @@ class Button {
           if (!noHLClick)
             rect(xLoc, yLoc, bWidth, bHeight, tSize/4); //creates a transparent black rounded rect() over the button
         if (preventNoise == 0) {
-          buttonActionPerformed(out);
+          buttonActionPerformed(this);
           preventNoise = -8;
         } else if (preventNoise < 0) 
           preventNoise++;
@@ -112,5 +111,9 @@ class Button {
 
   void noHighlightOnClick() {
     noHLClick = true;
+  }
+  void setText(String text) {
+    if(!text.equalsIgnoreCase(""))
+    in = text;
   }
 }
