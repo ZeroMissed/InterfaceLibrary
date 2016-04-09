@@ -1,7 +1,5 @@
-String ab = "Demo";
-String bc = "";
-Button a = new Button(30, 75, 50, ab);
-Button b = new Button(30, 75, 100, bc); //establishes button's parameters (String textS
+Button demoA = new Button(30, 75, 50, "Demo");
+Button b = new Button(30, 75, 100, "Demo"); //establishes button's parameters (String textS
 
 void setup() {
   size(500, 500); //sets size for the window
@@ -9,18 +7,19 @@ void setup() {
 
 void draw() {
   background(255);
-  a.setColor(0, 255, 0); //sets color to red
-  a.setTextColor(0, 255, 0); //sets color to green
-  a.setOutlineColor(0, 255, 0); //sets color to green
-  a.align(CENTER, CENTER); //draws button from the middle 
-  a.setText("hi"); //reset the button's text
-  a.setVisible(true); //set the button to visible REQUIRED
+  demoA.setColor(0, 0, 0); //sets color to red
+  demoA.setTextColor(0, 255, 0); //sets color to green
+  demoA.setOutlineColor(0, 255, 0); //sets color to green
+  demoA.align(CENTER, CENTER); //draws button from the middle 
+  demoA.setText("hi"); //reset the button's text
+  demoA.setVisible(true); //set the button to visible REQUIRED
   b.setVisible(true); //set the button to visible REQUIRED
+  b.setColor(255, 0, 0);
 }
 
 void buttonActionPerformed(Button button) { //class that handles presses of buttons REQUIRED
-  if(button == a)
-  println(ab);
+  if(button == demoA)
+  println("demoA");
   if(button == b)
-  println(bc);
+  println("b");
 }

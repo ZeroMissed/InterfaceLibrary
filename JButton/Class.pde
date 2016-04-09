@@ -1,13 +1,12 @@
 class Button {
   private String in, out, word[];
-  private int xMult, tSize, oxLoc, oyLoc, xLoc, yLoc, preventNoise, br, bg, bb, tr, tg, tb, or, og, ob;
+  private int tSize, oxLoc, oyLoc, xLoc, yLoc, preventNoise, br, bg, bb, tr, tg, tb, or, og, ob;
   private float bHeight, bWidth;
   private boolean noHLClick, noHLHover; // don't highlight button on click or on hover
 
   Button(int tSize, int oxLoc, int oyLoc, String in) {
     this.in = in.toLowerCase(); //set the text input to lower case
     this.tSize = tSize;
-    this.xMult = (2 * tSize)/3;
     this.oxLoc = oxLoc;
     this.oyLoc = oyLoc;
     this.xLoc = oxLoc;
@@ -15,6 +14,7 @@ class Button {
   }
 
   void setVisible(boolean tf) {
+    pushStyle();
     if (tf) {
       word = new String[in.length()];
       //assigns the value of each char to a String array to add proper capitalization
@@ -26,20 +26,19 @@ class Button {
             word[i] = word[i].toUpperCase();
           }
       }
-      pushStyle();
       word[0] = word[0].toUpperCase(); //sets first letter in the input string to capital
       out = join(word, ""); //joins the string array back into one string
 
       textSize(tSize);
       bHeight = tSize + (tSize/4); //sets the button's height based on the text size
-      bWidth = xMult * out.length(); //sets the button's witdh based on the xMult and the length of the string
+      bWidth = textWidth(out) + 20; //sets the button's witdh based on the xMult and the length of the string
       if (!(br == 0)||!(bg == 0)||!(bb == 0))
         fill(br, bg, bb);
       if (!(or == 0)||!(og == 0)||!(ob == 0))
         stroke(or, og, ob);
       rect(xLoc, yLoc, bWidth, bHeight, tSize/4); //creates a rounded rect() around the text
       
-      if (mouseX < xLoc + xMult * out.length() && mouseX > xLoc && mouseY < yLoc +  tSize + (tSize/4) && mouseY > yLoc) {
+      if (mouseX < xLoc + bWidth && mouseX > xLoc && mouseY < yLoc +  tSize + (tSize/4) && mouseY > yLoc) {
         if (!noHLHover) {
           fill(0, 50); //sets fill to transparent black
           rect(xLoc, yLoc, bWidth, bHeight, tSize/4); //creates a transparent black rounded rect() over the button
@@ -115,5 +114,8 @@ class Button {
   void setText(String text) {
     if(!text.equalsIgnoreCase(""))
     in = text;
+  }
+  void setTextSize(int size) {
+    this.tSize = size;
   }
 }
